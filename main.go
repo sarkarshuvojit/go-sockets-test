@@ -54,5 +54,7 @@ func handleSocketMessage(c *websocket.Conn, w http.ResponseWriter, r *http.Reque
 	fmt.Printf("MT %v\n", msgType)
 	fmt.Printf("Data %v\n", string(data))
 
+	c.Write(context.Background(), websocket.MessageText, []byte(`{"hi": "hello"}`))
+
 	c.Close(websocket.StatusNormalClosure, "Your may leave now")
 }
